@@ -69,16 +69,19 @@ public class ArithmeticCalculatorServlet extends HttpServlet {
         request.setAttribute("secondNumber", secondNumber);
 
         int result;
-        
+
         if (firstNumber == null || firstNumber.equals("") || firstNumber.matches("^[0-9]*$") == false
                 || secondNumber == null || secondNumber.equals("") || secondNumber.matches("^[0-9]*$") == false) {
             request.setAttribute("result", "Please enter valid numbers.");
         } else if (calculate.equals("+")) {
             result = Integer.sum(Integer.parseInt(firstNumber), Integer.parseInt(secondNumber));
             request.setAttribute("result", "Result: " + result);
-        } else if (calculate.equals("-")){
+        } else if (calculate.equals("-")) {
             result = (Integer.parseInt(firstNumber) - Integer.parseInt(secondNumber));
-             request.setAttribute("result", "Result: " + result);
+            request.setAttribute("result", "Result: " + result);
+        } else if (calculate.equals("*")) {
+            result = (Integer.parseInt(firstNumber) * Integer.parseInt(secondNumber));
+            request.setAttribute("result", "Result: " + result);
         }
         getServletContext().getRequestDispatcher("/WEB-INF/arithmeticcalculator.jsp")
                 .forward(request, response);
