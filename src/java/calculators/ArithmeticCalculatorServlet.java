@@ -82,6 +82,9 @@ public class ArithmeticCalculatorServlet extends HttpServlet {
         } else if (calculate.equals("*")) {
             result = (Integer.parseInt(firstNumber) * Integer.parseInt(secondNumber));
             request.setAttribute("result", "Result: " + result);
+        } else if (calculate.equals("%")) {
+            result = (Integer.parseInt(firstNumber) % Integer.parseInt(secondNumber));
+            request.setAttribute("result", "Result: " + result);
         }
         getServletContext().getRequestDispatcher("/WEB-INF/arithmeticcalculator.jsp")
                 .forward(request, response);
